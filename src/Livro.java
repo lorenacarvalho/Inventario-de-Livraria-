@@ -1,6 +1,5 @@
 
 public class Livro {
-    //private static ArrayList<Livros> catalogo;
     private String titulo;
     private String descricao;
     private double preco;
