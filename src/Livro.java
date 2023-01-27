@@ -43,7 +43,7 @@ public class Livro {
 
     @Override
     public String toString() {
-        return ("Titulo: " + getTitulo() + "\nDescrição: " + getDescricao() + "\nPreço: " + getPreco());
+        return ("\nTitulo: " + getTitulo() + "\nDescrição: " + getDescricao() + "\nPreço: " + getPreco());
     }
 
 
