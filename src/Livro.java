@@ -3,11 +3,14 @@ public class Livro {
     private String titulo;
     private String descricao;
     private double preco;
+    private int quantidade;
    
-    public Livro(String title, String description, double price){
-        this.titulo = title;
-        this.descricao = description;
-        this.preco = price;
+    
+    public Livro(String titulo, String descricao, double preco, int quantidade){
+        this.titulo = titulo;
+        this.descricao = descricao;
+        this.preco = preco;
+        this.quantidade = quantidade;
     }
    
     public String getTitulo() {
@@ -16,21 +19,29 @@ public class Livro {
     public void setTitulo(String titulo) {
         this.titulo = titulo;
     }
-   
+    
     public String getDescricao() {
         return descricao;
     }
     public void setDescricao(String descricao) {
         this.descricao = descricao;
     }
-   
+    
     public double getPreco() {
         return preco;
     }
     public void setPreco(double preco) {
         this.preco = preco;
     }
+    
+    public int getQuantidade() {
+        return quantidade;
+    }
 
+    public void setQuantidade(int quantidade) {
+        this.quantidade = quantidade;
+    }
+    
     @Override
     public boolean equals(Object ref) {
         Livro livro = (Livro) ref;
@@ -40,11 +51,12 @@ public class Livro {
         }
         return false;
     }
-
+    
     @Override
     public String toString() {
-        return ("\nTitulo: " + getTitulo() + "\nDescrição: " + getDescricao() + "\nPreço: " + getPreco());
+        return ("\nTitulo: " + getTitulo() + "\nDescrição: " + getDescricao() + "\nPreço: " + getPreco() + " PO" +
+        "\nQuantidade: " + getQuantidade());
     }
-
-
+    
+    
 }
