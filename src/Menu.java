@@ -79,7 +79,7 @@ public abstract class Menu {
 
     public static void escolhaL() {
         System.out.println("Segue abaixo o catálogo com todos os livros!");
-        System.out.println("\n" + estante.mostrarCatalogo());
+        estante.mostrarCatalogo();
 
     }
 
@@ -142,6 +142,7 @@ public abstract class Menu {
                 exemplar.setPreco(novoPreco);
                 break;
             default:
+                //exibir mensagem de erro e iniciar novamente o menu para escolha de modificações
                 break;
         }
 

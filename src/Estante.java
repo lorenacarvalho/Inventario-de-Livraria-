@@ -31,8 +31,10 @@ public class Estante {
         return null;
     }
 
-    public ArrayList<Livro> mostrarCatalogo() {
-        return this.catalogo;
+    public void mostrarCatalogo() {
+        for (Livro i : catalogo){
+            System.out.println(i);
+        }
     }
 
     public void removerLivro(String titulo) {
