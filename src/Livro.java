@@ -37,11 +37,19 @@ public class Livro {
     public int getQuantidade() {
         return quantidade;
     }
-
     public void setQuantidade(int quantidade) {
         this.quantidade = quantidade;
     }
     
+    public static void validarEntradaCaracter(String entrada) throws UnacceptableEntryException{
+        if (entrada.isBlank()){
+            throw new UnacceptableEntryException ("Não é possível título ou descrições vazias!\nTente novamente!");
+        }else if (entrada.matches("[0-9]+") && entrada.length() >= 1){
+            throw new UnacceptableEntryException("Não é possível ter títulos e descrições apenas com números." + 
+            "\nPor favor, tente novamente!");
+        }
+    }
+
     @Override
     public boolean equals(Object ref) {
         Livro livro = (Livro) ref;
