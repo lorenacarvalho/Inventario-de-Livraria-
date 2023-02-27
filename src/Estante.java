@@ -20,7 +20,6 @@ public class Estante {
             exemplar.setQuantidade(exemplar.getQuantidade() + quantidade);
         }catch(BookNotFoundException ex){
             System.out.println(ex.getMessage());
-            ex.printStackTrace();
         }
 
     }
