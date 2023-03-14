@@ -1,8 +1,10 @@
 import java.util.ArrayList;
+import java.util.Comparator;
+import java.util.List;
 
 public class Estante {
 
-    private ArrayList<Livro> catalogo;
+    private List<Livro> catalogo;
 
     public Estante() {
         this.catalogo = new ArrayList<Livro>();
@@ -14,40 +16,44 @@ public class Estante {
         return exemplar;
     }
 
-    public void modificarQuantidadeExemplar(String titulo, int quantidade){
-        try{
+    public void modificarQuantidadeExemplar(String titulo, int quantidade) {
+        try {
             Livro exemplar = buscarLivro(titulo);
             exemplar.setQuantidade(exemplar.getQuantidade() + quantidade);
-        }catch(BookNotFoundException ex){
+        } catch (BookNotFoundException ex) {
             System.out.println(ex.getMessage());
         }
 
     }
 
-    public Livro buscarLivro(String titulo) throws BookNotFoundException {
-            for (int i = 0; i < this.catalogo.size(); i++) {
-                if (this.catalogo.get(i).getTitulo().equals(titulo)) {
-                    return this.catalogo.get(i);
-                }
+    public Livro buscarLivro(String entrada) throws BookNotFoundException {
+        String titulo = entrada.substring(0, 1).toUpperCase() + entrada.substring(1);
+        for (int i = 0; i < this.catalogo.size(); i++) {
+            if (this.catalogo.get(i).getTitulo().equals(titulo)) {
+                return this.catalogo.get(i);
             }
-           
-        throw new BookNotFoundException("O livro '"+ titulo + "' não existe ou foi digitado incorretamente");
+        }
+
+        throw new BookNotFoundException("O livro '" + titulo + "' não existe ou foi digitado incorretamente");
 
     }
 
     public void mostrarCatalogo() {
-        for (Livro i : catalogo){
-            System.out.println(i);
-        }
+        catalogo.sort(Comparator.comparing(Livro::getTitulo));
+        catalogo.forEach(exemplar -> System.out.println(exemplar));
     }
 
-    public void removerLivro(String titulo) {
+    public void removerLivro(String entrada) throws BookNotFoundException {
+        String titulo = entrada.substring(0, 1).toUpperCase() + entrada.substring(1);
         for (int i = 0; i < this.catalogo.size(); i++) {
             if (this.catalogo.get(i).getTitulo().equals(titulo)) {
                 this.catalogo.remove(i);
                 break;
             }
         }
+
+        throw new BookNotFoundException(
+                "O livro '" + titulo + "' não foi removido pois não existe ou foi digitado incorretamente");
     }
 
 }
